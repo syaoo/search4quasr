@@ -28,16 +28,20 @@ tarr = startime:step:endtime-step;
 
 idxs=zeros(size(dec,1),1);
 % fname=strcat(st,'.txt');
-fname = 'tt1.txt';
-f=fullfile('../data',fname);
-fid = fopen(f,'w');
-tit = ["DateTime","Name","RA","DEC","E_Theta","M_Theta"];
-fprintf(fid,'%+19s\t %+16s\t %+17s\t %+17s\t %+9s\t %+9s\n',tit);
+% fname = 'tt1.txt';
+% f=fullfile('../data',fname);
+% fid = fopen(f,'w');
+% tit = ["DateTime","Name","RA","DEC","E_Theta","M_Theta"];
+% fprintf(fid,'%+19s\t %+16s\t %+17s\t %+17s\t %+9s\t %+9s\n',tit);
 % sss = 0
 for nt = tarr
     datetime(nt,'convertfrom','juliandate')
     vec1 = planetEphemeris(nt,'Earth','Sun','430','km');
     vec2 = planetEphemeris(nt,'Moon','Sun','430','km');
+    % test
+%     p1 = -planetEphemeris(nt,'SolarSystem','Earth','430','km');
+%     p2 = -planetEphemeris(nt,'SolarSystem','sun','430','km');
+%     vec = p1-p2;
     RD = xyz2deg(vec1);
     rang1 = 18;
     rang2 = 16;
@@ -50,7 +54,7 @@ for nt = tarr
     ndat = dat(idx,:);
     for i = 1:size(sdec,1)
         theta = acosd(dot(vec1,sdec(i,:))/(norm(vec1)*norm(sdec(i,:))));
-%         theta11 = acosd(dot(vec1,drc(i,:))/(norm(vec1)*norm(drc(i,:))));
+%         theta11 = acosd(dot(vec,sdec(i,:))/(norm(vec)*norm(sdec(i,:))));
         theta1 = acosd(dot(vec2,sdec(i,:))/(norm(vec2)*norm(sdec(i,:))));
 %         sss=sss+(theta == theta11);
         if theta <= 15
