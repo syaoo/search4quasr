@@ -1,0 +1,5 @@
+https://www.cv.nrao.edu/nvss/
+https://www.iers.org/IERS/EN/DataProducts/ICRF/ICRF3/icrf3.html;jsessionid=FA0561850906BA17778A247FF283D641.live1
+https://www.cv.nrao.edu/~rfisher/Ephemerides/ephem_descr.html
+http://www.ephemeris.com/software.html
+http://www.iausofa.org/
