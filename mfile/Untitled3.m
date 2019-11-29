@@ -39,9 +39,9 @@ for nt = tarr
     vec1 = planetEphemeris(nt,'Earth','Sun','430','km');
     vec2 = planetEphemeris(nt,'Moon','Sun','430','km');
     % test
-%     p1 = -planetEphemeris(nt,'SolarSystem','Earth','430','km');
-%     p2 = -planetEphemeris(nt,'SolarSystem','sun','430','km');
-%     vec = p1-p2;
+    p1 = -planetEphemeris(nt,'SolarSystem','Earth','430','km');
+    p2 = -planetEphemeris(nt,'SolarSystem','sun','430','km');
+    vec = p1-p2;
     RD = xyz2deg(vec1);
     rang1 = 18;
     rang2 = 16;
@@ -54,7 +54,10 @@ for nt = tarr
     ndat = dat(idx,:);
     for i = 1:size(sdec,1)
         theta = acosd(dot(vec1,sdec(i,:))/(norm(vec1)*norm(sdec(i,:))));
-%         theta11 = acosd(dot(vec,sdec(i,:))/(norm(vec)*norm(sdec(i,:))));
+        qsa = p1-sdec(i,:);
+        theta11 = acosd(dot(vec,qsa)/(norm(vec)*norm(qsa)));
+        theta12 = acosd(dot(vec,sdec(i,:))/(norm(vec)*norm(sdec(i,:))));
+        % theta == theta12; theta ~= theta11;
         theta1 = acosd(dot(vec2,sdec(i,:))/(norm(vec2)*norm(sdec(i,:))));
 %         sss=sss+(theta == theta11);
         if theta <= 15
