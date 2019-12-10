@@ -38,6 +38,8 @@ for f =files
         box on
         ax = gca;
         ax.GridLineStyle='-.';
+        ax.FontSize=25;
+        ax.Position=[0.07 0.11 0.86 0.83];
         set(gcf,'position',get(0,'screensize'));
         th = strcat(num2str(r{1}(1)),f{1}(1:7),'.fig');
         saveas(gcf,fullfile(picpath,th));
